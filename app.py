@@ -29,11 +29,18 @@ def searchUser():
     driver.get(constants.search_url.format(userpass.User)) # you must enter the your user search instead (userpass.User)
     driver.implicitly_wait(20)
 
-def following():
+def getfollowingData():
     driver.find_element_by_xpath(constants.click_following).click()
+    sleep(2)
+    get_id_data = driver.find_elements_by_xpath(constants.get_id)
+    for id in get_id_data:
+        # driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        # get_id_data.sendKeys(Keys.PAGE_DOWN)
+        id = id.text
+        print(id)
     
     
 login()
 notNowButton()
 searchUser()
-following()
+getfollowingData()

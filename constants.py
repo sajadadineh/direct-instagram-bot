@@ -1,12 +1,10 @@
 base_url = "https://www.instagram.com/"
-
 login_button = "//button[@class='sqdOP  L3NKy   y3zKF     ']"
-
 username = "//input[@name='username']"
 password = "//input[@name='password']"
-
 not_now_button = "//button[@class='GAMXX']"
-
 search_url = "https://www.instagram.com/{}/"
-
 click_following = "//a[@class=' _81NM2']"
+get_id = "//a[@class='FPmhX notranslate  _0imsa ']"
+direct_user = "//button[@class='fAR91 sqdOP  L3NKy _4pI4F   _8A5w5    ']"
+send_direct = "//button[@class='sqdOP yWX7d    y3zKF     ']"
