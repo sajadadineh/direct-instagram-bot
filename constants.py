@@ -8,3 +8,5 @@ password = "//input[@name='password']"
 not_now_button = "//button[@class='GAMXX']"
 
 search_url = "https://www.instagram.com/{}/"
+
+click_following = "//a[@class=' _81NM2']"

@@ -16,8 +16,8 @@ driver.get(constants.base_url)
 def login():
     driver.implicitly_wait(20)
     driver.find_element_by_xpath(constants.login_button).click()
-    driver.find_element_by_xpath(constants.username).send_keys(userpass.username)
-    driver.find_element_by_xpath(constants.password).send_keys(userpass.password, Keys.ENTER)
+    driver.find_element_by_xpath(constants.username).send_keys(userpass.username) # you must enter the your id instead (userpass.username)
+    driver.find_element_by_xpath(constants.password).send_keys(userpass.password, Keys.ENTER) # you must enter the your pass instead (userpass.username)
     sleep(2)
 
 def notNowButton():
@@ -26,10 +26,14 @@ def notNowButton():
     sleep(2)
 
 def searchUser():
-    driver.get(constants.search_url.format(userpass.User))
+    driver.get(constants.search_url.format(userpass.User)) # you must enter the your user search instead (userpass.User)
     driver.implicitly_wait(20)
 
-
+def following():
+    driver.find_element_by_xpath(constants.click_following).click()
+    
+    
 login()
 notNowButton()
 searchUser()
+following()
