@@ -1,7 +1,6 @@
 # direct-instagram-bot
 
-<<<<<<< HEAD
-This robot is sending direct to a user's follower
+This robot is sending direct to a user's following
 
 ## Description
 
@@ -18,6 +17,3 @@ This robot login in with any account and goes with the ID you give and send dire
 
 - [ ] scrolling on following list
 - [ ] get id list and  send them a direct
-=======
-This robot is sending direct to a user's following
->>>>>>> 55f97b5f815bf90843cf8f747b0414c69690d7d2
