@@ -125,5 +125,9 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+#hide_file
+userpass.py
+chromedriver
+
 # Pyre type checker
 .pyre/

@@ -20,4 +20,10 @@ def login():
     driver.find_element_by_xpath(constants.password).send_keys(userpass.password, Keys.ENTER)
     sleep(2)
 
+def notNowButton():
+    driver.implicitly_wait(20)
+    driver.find_element_by_xpath(constants.not_now_button).click()
+    sleep(2)
+
 login()
+notNowButton()
