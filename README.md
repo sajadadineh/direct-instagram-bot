@@ -1,6 +1,6 @@
 # direct-instagram-bot
 
-This robot is sending direct to a user's following
+This robot is sending direct to a following's ID
 
 ## Description
 
@@ -11,7 +11,7 @@ This robot login in with any account and goes with the ID you give and send dire
 - use mobileEmulation
 - python
 - selenium 
-- headless (Maybe)
+> headless (Maybe)
 
 ## Todo 
 
