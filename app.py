@@ -25,5 +25,11 @@ def notNowButton():
     driver.find_element_by_xpath(constants.not_now_button).click()
     sleep(2)
 
+def searchUser():
+    driver.get(constants.search_url.format(userpass.User))
+    driver.implicitly_wait(20)
+
+
 login()
 notNowButton()
+searchUser()

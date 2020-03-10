@@ -6,3 +6,5 @@ username = "//input[@name='username']"
 password = "//input[@name='password']"
 
 not_now_button = "//button[@class='GAMXX']"
+
+search_url = "https://www.instagram.com/{}/"
