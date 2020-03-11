@@ -15,6 +15,7 @@ This robot login in with any account and goes with the ID you give and send dire
 
 ## Todo 
 
+- [ ] Separate the IDs and directories function
 - [ ] scrolling on following list
 - [ ] get id list and  send them a direct
 
