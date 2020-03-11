@@ -8,14 +8,15 @@ This robot login in with any account and goes with the ID you give and send dire
 
 ## Advantages
 
+- selenium
+- python 
 - use mobileEmulation
-- python
-- selenium 
-> headless (Maybe)
+- headless 
 
 ## Todo 
 
 - [ ] Separate the IDs and directories function
+- [ ] clicke following button instead followers button
 - [ ] scrolling on following list
 - [ ] get id list and  send them a direct
 
