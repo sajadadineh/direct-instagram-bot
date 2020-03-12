@@ -12,11 +12,11 @@ def sendDirect(driver, array):
         driver.find_element_by_xpath(constants.direct_user).click()
         driver.implicitly_wait(20)
         write_massage = driver.find_element_by_tag_name("textarea")
-        write_massage.send_keys("YOUR MASSAGE")
-        sleep(2)
         """
         You should also increase your sleep time depending on the length of your message
         """
+        write_massage.send_keys("YOUR MASSAGE")
+        sleep(2)
         driver.find_element_by_xpath(constants.send_direct)
 
 
