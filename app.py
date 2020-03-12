@@ -1,11 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep
-import pickle
-import os
 import constants
-import userpass
+import direct
+
+username = raw_input("please Enter your username : ")
+password = raw_input("please Enter your password : ")
+ID = raw_input("Enter the ID you want : ")
 
 mobile_emulation = {"deviceName": "Nexus 5"}
 option = webdriver.ChromeOptions()
@@ -14,26 +15,28 @@ option.add_argument('headless')
 driver = webdriver.Chrome(chrome_options= option ,executable_path='./chromedriver')
 driver.get(constants.login_url)
 
-get_following_data = [] # list following's ID
+list_following_data = [] 
 
 def closeDriver():
     driver.close()
 
 def login():
     driver.implicitly_wait(20)
-    driver.find_element_by_xpath(constants.username).send_keys(userpass.username) # you must enter the your id instead (userpass.username)
-    driver.find_element_by_xpath(constants.password).send_keys(userpass.password,Keys.ENTER) # you must enter the your pass instead (userpass.username)
+    driver.find_element_by_xpath(constants.username).send_keys(username)
+    driver.find_element_by_xpath(constants.password).send_keys(password,Keys.ENTER)
     print(constants.login_successfuly)
-    sleep(4)
+
+def notNowButton():
+    driver.implicitly_wait(20)
+    driver.find_element_by_xpath(constants.not_now_button)
 
 def searchUser():
-    driver.implicitly_wait(20)
-    driver.get(constants.search_url.format(userpass.User)) # you must enter the your user search instead (userpass.User)
+    driver.get(constants.search_url.format(ID))
     print(constants.user_found)
 
 def getFollowingData():
     driver.implicitly_wait(20)
-    following = driver.find_element_by_xpath(constants.following.format(userpass.User)) # you must enter the your user search instead (userpass.User)
+    following = driver.find_element_by_xpath(constants.following.format(ID))
     num_following = int(following.text.replace(",", ""))
     print("following : "+ str(num_following) +"\nstart get data please wait ... ")
     following.click()
@@ -49,12 +52,15 @@ def getFollowingData():
     
     for id in get_id_data:
         id = id.text
-        get_following_data.append(id)
+        list_following_data.append(id)
+    print("List complete")
+
 try:
     login()
+    notNowButton()
     searchUser()
     getFollowingData()
-    print(get_following_data)
+    direct.sendDirect(driver , list_following_data)
 except Exception as e:
     closeDriver()
     print(e)

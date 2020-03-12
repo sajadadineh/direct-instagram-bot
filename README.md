@@ -19,7 +19,8 @@ This robot login in with any account and goes with the ID you give and send dire
 - [x] clicke following button instead followers button
 - [x] scrolling on following list
 - [ ] Print a message when the user cannot be found 
-- [ ] get id list and  send them a direct
+- [x] get id list and  send them a direct
+- [ ] Optimize `getFollowingData‍‍` function
 
 ## How to use it?
 
