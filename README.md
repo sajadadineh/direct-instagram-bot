@@ -18,6 +18,7 @@ This robot login in with any account and goes with the ID you give and send dire
 - [x] Separate the IDs and directories function
 - [x] clicke following button instead followers button
 - [x] scrolling on following list
+- [ ] Print a message when the user cannot be found 
 - [ ] get id list and  send them a direct
 
 ## How to use it?

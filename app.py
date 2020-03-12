@@ -12,7 +12,7 @@ option = webdriver.ChromeOptions()
 option.add_experimental_option("mobileEmulation", mobile_emulation)
 option.add_argument('headless')
 driver = webdriver.Chrome(chrome_options= option ,executable_path='./chromedriver')
-driver.get(constants.base_url)
+driver.get(constants.login_url)
 
 get_following_data = [] # list following's ID
 
@@ -21,16 +21,10 @@ def closeDriver():
 
 def login():
     driver.implicitly_wait(20)
-    driver.find_element_by_xpath(constants.login_button).click()
-    driver.implicitly_wait(20)
     driver.find_element_by_xpath(constants.username).send_keys(userpass.username) # you must enter the your id instead (userpass.username)
     driver.find_element_by_xpath(constants.password).send_keys(userpass.password,Keys.ENTER) # you must enter the your pass instead (userpass.username)
-    sleep(2)
-
-def notNowButton():
-    driver.implicitly_wait(20)
     print(constants.login_successfuly)
-    driver.find_element_by_xpath(constants.not_now_button).click()
+    sleep(4)
 
 def searchUser():
     driver.implicitly_wait(20)
@@ -39,36 +33,29 @@ def searchUser():
 
 def getFollowingData():
     driver.implicitly_wait(20)
-    flwing = 0
-    following = driver.find_elements_by_xpath(constants.following)
-    for flw in following:
-        flwing += 1 
-        if flwing == 3:
-            num_following = int(flw.text.replace(",", ""))
-            print(num_following)
-            flw.click()
-
+    following = driver.find_element_by_xpath(constants.following.format(userpass.User)) # you must enter the your user search instead (userpass.User)
+    num_following = int(following.text.replace(",", ""))
+    print("following : "+ str(num_following) +"\nstart get data please wait ... ")
+    following.click()
     driver.implicitly_wait(20)
     sleep(2)
     num_id = 0
-    boolian = True
-    while boolian:
+    while num_id < num_following:
+        num_id = 0
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         get_id_data = driver.find_elements_by_xpath(constants.get_id)
         for id in get_id_data:
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             num_id += 1
-            if num_id < num_following:
-                get_id_data = driver.find_elements_by_xpath(constants.get_id)
-                for id in get_id_data:
-                    id = id.text
-                    get_following_data.append(id)
-                    num_id += 1
-                    boolian = False
-            else:
-                num_id = 0
-            
-login()
-notNowButton()
-searchUser()
-getFollowingData()
-print("anjam shod")
+    
+    for id in get_id_data:
+        id = id.text
+        get_following_data.append(id)
+try:
+    login()
+    searchUser()
+    getFollowingData()
+    print(get_following_data)
+except Exception as e:
+    closeDriver()
+    print(e)
+    print(constants.problem)
