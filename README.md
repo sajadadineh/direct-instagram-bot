@@ -2,22 +2,22 @@
 
 This robot is sending direct to a following's ID
 
-## Description
+#### Description
 
 This robot login in with any account and goes with the ID you give and send directs to a following's ID
 
-## Advantages
+#### Advantages
 
 - selenium
 - python 
 - use mobileEmulation
 - headless 
 
-## Todo 
+#### Todo list
 
-- [ ] Separate the IDs and directories function
-- [ ] clicke following button instead followers button
-- [ ] scrolling on following list
+- [x] Separate the IDs and directories function
+- [x] clicke following button instead followers button
+- [x] scrolling on following list
 - [ ] get id list and  send them a direct
 
 ## How to use it?

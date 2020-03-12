@@ -10,37 +10,65 @@ import userpass
 mobile_emulation = {"deviceName": "Nexus 5"}
 option = webdriver.ChromeOptions()
 option.add_experimental_option("mobileEmulation", mobile_emulation)
-driver = webdriver.Chrome(executable_path='./chromedriver',chrome_options= option)
+option.add_argument('headless')
+driver = webdriver.Chrome(chrome_options= option ,executable_path='./chromedriver')
 driver.get(constants.base_url)
+
+get_following_data = [] # list following's ID
+
+def closeDriver():
+    driver.close()
 
 def login():
     driver.implicitly_wait(20)
     driver.find_element_by_xpath(constants.login_button).click()
+    driver.implicitly_wait(20)
     driver.find_element_by_xpath(constants.username).send_keys(userpass.username) # you must enter the your id instead (userpass.username)
-    driver.find_element_by_xpath(constants.password).send_keys(userpass.password, Keys.ENTER) # you must enter the your pass instead (userpass.username)
+    driver.find_element_by_xpath(constants.password).send_keys(userpass.password,Keys.ENTER) # you must enter the your pass instead (userpass.username)
     sleep(2)
 
 def notNowButton():
     driver.implicitly_wait(20)
+    print(constants.login_successfuly)
     driver.find_element_by_xpath(constants.not_now_button).click()
-    sleep(2)
 
 def searchUser():
-    driver.get(constants.search_url.format(userpass.User)) # you must enter the your user search instead (userpass.User)
     driver.implicitly_wait(20)
+    driver.get(constants.search_url.format(userpass.User)) # you must enter the your user search instead (userpass.User)
+    print(constants.user_found)
 
-def getfollowingData():
-    driver.find_element_by_xpath(constants.click_following).click()
+def getFollowingData():
+    driver.implicitly_wait(20)
+    flwing = 0
+    following = driver.find_elements_by_xpath(constants.following)
+    for flw in following:
+        flwing += 1 
+        if flwing == 3:
+            num_following = int(flw.text.replace(",", ""))
+            print(num_following)
+            flw.click()
+
+    driver.implicitly_wait(20)
     sleep(2)
-    get_id_data = driver.find_elements_by_xpath(constants.get_id)
-    for id in get_id_data:
-        # driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        # get_id_data.sendKeys(Keys.PAGE_DOWN)
-        id = id.text
-        print(id)
-    
-    
+    num_id = 0
+    boolian = True
+    while boolian:
+        get_id_data = driver.find_elements_by_xpath(constants.get_id)
+        for id in get_id_data:
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            num_id += 1
+            if num_id < num_following:
+                get_id_data = driver.find_elements_by_xpath(constants.get_id)
+                for id in get_id_data:
+                    id = id.text
+                    get_following_data.append(id)
+                    num_id += 1
+                    boolian = False
+            else:
+                num_id = 0
+            
 login()
 notNowButton()
 searchUser()
-getfollowingData()
+getFollowingData()
+print("anjam shod")
