@@ -44,4 +44,5 @@ This robot login in with any account and goes with the ID you give and send dire
 `driver = webdriver.Chrome(executable_path='YOUR WEB DRIVER',chrome_options= option)`
 
 7.Run by `python app.py` for get list following's ID and write a file.txt
+
 8.Run by `python direct.py` for send direct
