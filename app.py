@@ -2,42 +2,21 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 import constants
+import helper
 
-username = raw_input("please Enter your username : ")
-password = raw_input("please Enter your password : ")
 ID = raw_input("Enter the ID you want : ")
 flw = raw_input("Send direct for 'followers' or 'following' : ")
 
-mobile_emulation = {"deviceName": "Nexus 5"}
-option = webdriver.ChromeOptions()
-option.add_experimental_option("mobileEmulation", mobile_emulation)
-option.add_argument('headless')
-driver = webdriver.Chrome(chrome_options= option ,executable_path='./chromedriver')
-driver.get(constants.login_url)
-
 list_following_data = [] 
 
-def closeDriver():
-    driver.close()
-
-def login(username, password):
-    driver.implicitly_wait(20)
-    driver.find_element_by_xpath(constants.username).send_keys(username)
-    driver.find_element_by_xpath(constants.password).send_keys(password,Keys.ENTER)
-    print(constants.login_successfuly)
-
-def notNowButton():
-    driver.implicitly_wait(20)
-    driver.find_element_by_xpath(constants.not_now_button)
-
-def searchUser(ID):
+def searchUser(driver, ID):
     try:
         driver.get(constants.search_url.format(ID))
         print(constants.user_found)
     except:
         print(constants.user_not_found)
 
-def getFollowingData(ID , flw):
+def getFollowingData(driver, ID, flw):
     driver.implicitly_wait(20)
     try:
         if flw == "followers":
@@ -47,12 +26,14 @@ def getFollowingData(ID , flw):
     except:
         print(constants.private_page)
     num_flw = int(flw.text.replace(",", ""))
+    sleep_load = num_flw/3
     print(constants.please_wait.format(str(num_flw)))
+    print(constants.estimated_time+str(sleep_load))
     flw.click()
     driver.implicitly_wait(20)
     num_id = 0
     while num_id < num_flw:
-        sleep(60)
+        sleep(sleep_load)
         num_id = 0
         get_id_data = driver.find_elements_by_xpath(constants.get_id)
         for id in get_id_data:
@@ -66,18 +47,14 @@ def getFollowingData(ID , flw):
     return list_following_data
 
 def creatTxtFile(ID, array):
-    with open(ID+"txt","w") as txt_file:
+    with open(ID+".txt","w") as txt_file:
         for word in array:
             txt_file.write(word+"\n")
 
-try:
-    login(username=username, password=password)
-    notNowButton()
-    searchUser(ID=ID)
-    getFollowingData(ID=ID, flw=flw)
-    creatTxtFile(ID=ID,array=list_following_data)
-    closeDriver()
-except Exception as e:
-    closeDriver()
-    print(e)
-    print(constants.problem)
+
+helper.login()
+helper.notNowButton()
+searchUser(driver=helper.driver, ID=ID)
+getFollowingData(driver=helper.driver,ID=ID, flw=flw)
+creatTxtFile(ID=ID,array=list_following_data)
+helper.closeDriver()
