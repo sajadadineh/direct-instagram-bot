@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from time import sleep
 import constants
 
-def sendDirect(driver, array):
+def sendDirect(driver, array, massage):
     num_array = 0
     while num_array < len(array):
         print("start direct for "+ array[num_array])
@@ -15,9 +15,9 @@ def sendDirect(driver, array):
         """
         You should also increase your sleep time depending on the length of your message
         """
-        write_massage.send_keys("YOUR MASSAGE")
+        write_massage.send_keys(massage)
         sleep(2)
-        driver.find_element_by_xpath(constants.send_direct)
+        # driver.find_element_by_xpath(constants.send_direct)
 
 
         

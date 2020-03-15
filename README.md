@@ -9,22 +9,24 @@ This robot login in with any account and goes with the ID you give and send dire
 ### Advantages
 
 - selenium
-- python 
+- python
 - use mobileEmulation
-- headless 
+- headless
 
 ### Todo list
 
-- [x] Separate the IDs and directories function
+- [x] separate the IDs and directories function
 - [x] clicke following button instead followers button
 - [x] scrolling on following list
-- [ ] Print a message when the user cannot be found 
+- [x] print a message when the user cannot be found
 - [x] get id list and  send them a direct
+- [x] choosing to get data from follower or following
+- [X] message for personal pages
 - [ ] Optimize `getFollowingData‍‍` function
 
 ## How to use it?
 
-1.Install python, pip, virtualenv
+1.Install python2, pip, virtualenv
 
 2.Clone the project `git clone https://github.com/sajadadineh/direct-instagram-bot.git`
 
