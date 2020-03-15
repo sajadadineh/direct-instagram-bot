@@ -6,6 +6,7 @@ This robot is sending direct to a following's ID
 
 This robot login in with any account and goes with the ID you give and send directs to a following's ID
 >The first script get username , password and ID and the output is a file containing the following's ID
+
 >The second script receives a text file and send direct to IDs in the file
 
 ### Advantages
