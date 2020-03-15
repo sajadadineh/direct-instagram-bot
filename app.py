@@ -26,24 +26,18 @@ def getFollowingData(driver, ID, flw):
     except:
         print(constants.private_page)
     num_flw = int(flw.text.replace(",", ""))
-    sleep_load = num_flw/3
+    sleep_load = num_flw/2
     print(constants.please_wait.format(str(num_flw)))
     print(constants.estimated_time+str(sleep_load))
     flw.click()
     driver.implicitly_wait(20)
     num_id = 0
-    while num_id < num_flw:
-        sleep(sleep_load)
-        num_id = 0
-        get_id_data = driver.find_elements_by_xpath(constants.get_id)
-        for id in get_id_data:
-            num_id += 1
-        print(constants.elements_found.format(num_id))
-    
+    sleep(sleep_load)
+    get_id_data = driver.find_elements_by_xpath(constants.get_id)
     for id in get_id_data:
         id = id.text
         list_following_data.append(id)
-    print(constants.list_complete)
+    print(constants.elements_found.format(num_id))
     return list_following_data
 
 def creatTxtFile(ID, array):
