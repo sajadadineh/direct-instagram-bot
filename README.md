@@ -25,7 +25,7 @@ This robot login in with any account and goes with the ID you give and send dire
 - [x] get id list and  send them a direct
 - [x] choosing to get data from follower or following
 - [X] message for personal pages
-- [ ] rename app.py to list.py
+- [x] rename app.py to list.py
 - [ ] Optimize `getFollowingData‍‍` function
 - [ ] write `direct.py` class
 
@@ -45,6 +45,6 @@ This robot login in with any account and goes with the ID you give and send dire
 
 `driver = webdriver.Chrome(executable_path='YOUR WEB DRIVER',chrome_options= option)`
 
-7.Run by `python app.py` for get list following's ID and write a file.txt
+7.Run by `python list.py` for get list following's ID and write a file.txt
 
 8.Run by `python direct.py` for send direct
