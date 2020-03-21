@@ -36,6 +36,7 @@ def getFollowingData(driver, ID, flw):
     get_id_data = driver.find_elements_by_xpath(constants.get_id)
     for id in get_id_data:
         id = id.text
+        num_id += 1
         list_following_data.append(id)
     print(constants.elements_found.format(num_id))
     return list_following_data
