@@ -27,7 +27,7 @@ This robot login in with any account and goes with the ID you give and send dire
 - [X] message for personal pages
 - [x] rename app.py to list.py
 - [ ] Optimize `getFollowingData‍‍` function
-- [ ] write `direct.py` class
+- [x] write `direct.py` class
 
 ## How to use it?
 

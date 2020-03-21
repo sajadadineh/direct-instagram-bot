@@ -4,11 +4,22 @@ from time import sleep
 import constants
 import helper
 
+following_data = []
+
+massage = raw_input("Please write your message text : ")
+file_path = raw_input("file name : ")
+
+def getFileText(file_path):
+    with open (file_path,'r')as file :
+        for f in file:
+            following_data.append(f)
+        file.close()
+
 def sendDirect(driver, array, massage):
     num_array = 0
-    while num_array < len(array):
-        print("start direct for "+ array[num_array])
-        driver.get(constants.search_url.format(array[num_array]))
+    while num_array < len(following_data):
+        print("start direct for "+ following_data[num_array])
+        driver.get(constants.search_url.format(following_data[num_array]))
         num_array += 1
         driver.find_element_by_xpath(constants.direct_user).click()
         driver.implicitly_wait(20)
@@ -18,10 +29,10 @@ def sendDirect(driver, array, massage):
         """
         write_massage.send_keys(massage)
         sleep(2)
-        # driver.find_element_by_xpath(constants.send_direct)
+        driver.find_element_by_xpath(constants.send_direct)
 
-
-        
-
-
-    
+helper.login()
+helper.notNowButton()
+getFileText(file_path=file_path)
+sendDirect(driver=helper.driver, array=following_data,massage=massage)
+helper.closeDriver()

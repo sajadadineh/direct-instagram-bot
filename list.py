@@ -26,7 +26,7 @@ def getFollowingData(driver, ID, flw):
     except:
         print(constants.private_page)
     num_flw = int(flw.text.replace(",", ""))
-    sleep_load = num_flw/2
+    sleep_load = num_flw/3
     print(constants.please_wait.format(str(num_flw)))
     print(constants.estimated_time+str(sleep_load))
     flw.click()
