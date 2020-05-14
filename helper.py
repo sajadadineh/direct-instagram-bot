@@ -9,8 +9,8 @@ option.add_argument('headless')
 driver = webdriver.Chrome(chrome_options= option ,executable_path='./chromedriver')
 driver.get(constants.login_url)
 
-username = raw_input("please Enter your username : ")
-password = raw_input("please Enter your password : ")
+username = input("please Enter your username : ")
+password = input("please Enter your password : ")
 
 def closeDriver():
     driver.close()

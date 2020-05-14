@@ -6,8 +6,8 @@ import helper
 
 following_data = []
 
-massage = raw_input("Please write your message text : ")
-file_path = raw_input("file name : ")
+massage = input("Please write your message text : ")
+file_path = input("file name : ")
 
 def getFileText(file_path):
     with open (file_path,'r')as file :

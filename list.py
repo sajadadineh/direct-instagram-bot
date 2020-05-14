@@ -4,8 +4,8 @@ from time import sleep
 import constants
 import helper
 
-ID = raw_input("Enter the ID you want : ")
-flw = raw_input("Send direct for 'followers' or 'following' : ")
+ID = input("Enter the ID you want : ")
+flw = input("Send direct for 'followers' or 'following' : ")
 
 list_following_data = [] 
 
@@ -18,6 +18,7 @@ def searchUser(driver, ID):
 
 def getFollowingData(driver, ID, flw):
     driver.implicitly_wait(20)
+    sleep(2)
     try:
         if flw == "followers":
             flw = driver.find_element_by_xpath(constants.followers.format(ID))
