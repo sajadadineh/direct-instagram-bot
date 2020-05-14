@@ -33,7 +33,7 @@ This robot login in with any account and goes with the ID you give and send dire
 
 1.Install python, pip, virtualenv
 
-2.Clone the project `git clone https://github.com/sajadadineh/direct-instagram-bot.git`
+2.Clone the project `git clone https://gitlab.com/sajadadineh/direct-instagram-bot.git`
 
 3.Create a virtualenv `virtualenv -p python venv`
 
