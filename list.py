@@ -26,14 +26,23 @@ def getFollowingData(driver, ID, flw):
             flw = driver.find_element_by_xpath(constants.following.format(ID))
     except:
         print(constants.private_page)
-    num_flw = int(flw.text.replace(",", ""))
-    sleep_load = num_flw/3
+    
+    num_flw = flw.text.replace(",", "")
+
+    if (num_flw.find('k')):
+        num_flw = int(num_flw.replace("k","")) 
+        num_flw *=10
+    else:
+        num_flw = int(num_flw)
+
+        
+    # sleep_load = num_flw/3
     print(constants.please_wait.format(str(num_flw)))
-    print(constants.estimated_time+str(sleep_load))
+    # print(constants.estimated_time+str(sleep_load))
     flw.click()
     driver.implicitly_wait(20)
     num_id = 0
-    sleep(sleep_load)
+    sleep(240)
     get_id_data = driver.find_elements_by_xpath(constants.get_id)
     for id in get_id_data:
         id = id.text

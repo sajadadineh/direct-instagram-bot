@@ -4,7 +4,7 @@ import constants
 
 mobile_emulation = {"deviceName": "Nexus 5"}
 option = webdriver.ChromeOptions()
-option.add_experimental_option("mobileEmulation", mobile_emulation)
+# option.add_experimental_option("mobileEmulation", mobile_emulation)
 option.add_argument('headless')
 driver = webdriver.Chrome(chrome_options= option ,executable_path='./chromedriver')
 driver.get(constants.login_url)
