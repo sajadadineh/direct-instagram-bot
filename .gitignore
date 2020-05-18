@@ -128,6 +128,7 @@ dmypy.json
 #hide_file
 userpass.py
 chromedriver
+*.txt
 
 # Pyre type checker
 .pyre/
